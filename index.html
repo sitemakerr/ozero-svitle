@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Озеро Світле — Риболовля в Одесі</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .video-scroll-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 1em;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .styled-video {
+      flex: 0 0 auto;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 3px solid #558b2f;
+      scroll-snap-align: start;
+      background-color: #f1f8e9;
+    }
+
+    .telegram-link {
+      display: inline-flex;
+      align-items: center;
+      font-weight: bold;
+      color: #0088cc;
+      text-decoration: none;
+      background: #e0f7fa;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .telegram-link:hover {
+      background: #b2ebf2;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #dcedc8;
+      color: #33691e;
+    }
+    header {
+      background: #558b2f;
+      color: white;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+    .menu-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+    nav {
+      background: #33691e;
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 2em;
+    }
+    section {
+      margin-bottom: 2em;
+      background: #f1f8e9;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      scroll-margin-top: 80px;
+    }
+    footer {
+      background: #33691e;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+    img.map {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 1em auto;
+      border: 2px solid #558b2f;
+      border-radius: 10px;
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #33691e;
+        z-index: 999;
+        padding: 1em 0;
+      }
+      nav.show {
+        display: flex;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('nav a');
+      const nav = document.querySelector('nav');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('show');
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Озеро Світле</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+  <nav>
+    <a href="#intro">Про нас</a>
+    <a href="#conditions">Умови</a>
+    <a href="#benefits">Пільги</a>
+    <a href="#restrictions">Заборони</a>
+    <a href="#location">Місцезнаходження</a>
+    <a href="#faq">Питання</a>
+    <a href="#media">Інше</a>
+    <a href="#contact">Контакти</a>
+  </nav>
+  <main>
+    <section id="intro">
+      <h2>Про нас</h2>
+      <p>Риболовля — це наше все! Озеро Світле — це не просто ставок. Це місце, де кожен рибалка, новачок чи професіонал, знайде спокій, адреналін та незабутні враження. Ми пропонуємо комфортні умови для риболовлі, чесні правила, регулярне зариблення, затишні альтанки та ввічливе обслуговування. Приїжджайте та переконайтесь самі — риболовля в нас справді особлива!</p>
+    </section>
+
+    <section id="conditions">
+      <h2>Умови риболовлі</h2>
+      <ul>
+        <li><strong>Рибалка на хижу рибу:</strong> Один спінінг — 400 грн. Ліміт — 3 кг. Понад норму — 220 грн/кг.</li>
+        <li><strong>Рибалка на мирну рибу:</strong> До 3 вудок з 1 гачком. 600 грн/особа (6:00–20:00), 1100 грн — 2 особи на одному помості. Ліміт — 4 кг.</li>
+        <li><strong>Спорт пакет:</strong> 400 грн. Без вилову. Фото/відео — і одразу випуск. Мат, антисептик, підсак — обов’язкові. Риба в садку чи травмована — по тарифу.</li>
+        <li>Оренда: антисептик + мат — 50 грн, підсак — 50 грн, поплавкова вудка без помосту — 250 грн (2 кг), додаткова вудка — 200 грн (+1 кг), альтанка з риболовлею — 1600 грн, без — 1000 грн день / 600 грн пів дня, шезлонг — 100 грн, парасолька — 50 грн.</li>
+        <li><strong>Особливі умови:</strong> трофейна риба (понад 5 кг) — лише з фотофіксацією та відпуском. Подарунок — день безкоштовної риболовлі.</li>
+        <li><strong>Для місцевих:</strong> безкоштовно 1 вудка, 3 кг (краснопірка, плотва, карась). Короп — 50% знижка, до 5 кг. Хижа риба — не входить.</li>
+        <li><strong>Ціни понад норму:</strong> короп — 140 грн/кг, карась — 100 грн/кг, щука — 220 грн/кг, білий амур — 170 грн/кг.</li>
+      </ul>
+    </section>
+
+    <section id="benefits">
+      <h2>Пільги</h2>
+      <ul>
+        <li>Інваліди 1–2 групи, учасники війни, АТО — безкоштовна риболовля у загальних зонах при наявності посвідчення. Ліміт — 3 кг.</li>
+        <li>На помостах — знижка 30% для пільгових категорій, але норма вилову — 3 кг.</li>
+      </ul>
+      <h3>Умови бронювання</h3>
+      <p>Онлайн-бронювання — передоплата 50% від вартості послуг.</p>
+    </section>
+
+    <section id="restrictions">
+      <h2>Заборони</h2>
+      <ol>
+        <li>Рибалка без дозволу адміністрації.</li>
+        <li>Перевищення ліміту без оплати.</li>
+        <li>Привласнення риби/біоресурсів незаконно.</li>
+        <li>Човни на водоймі.</li>
+        <li>Купання у ставку.</li>
+        <li>Сміття на території.</li>
+        <li>Браконьєрство.</li>
+        <li>Риболовля під час зариблення.</li>
+        <li>Шкода трофейній рибі — штрафи.</li>
+        <li>Снасті з кількома гачками — заборонено.</li>
+      </ol>
+      <p><strong>Увага!</strong> Перебування дітей без дорослих заборонено.</p>
+    </section>
+
+    <section id="location">
+      <h2>Місцезнаходження</h2>
+      <p>Красносільський ставок №2 (Старі дачі), поблизу Одеси. Нижче — інтерактивна карта для зручного доїзду:</p>
+      <a href="https://maps.app.goo.gl/8fpy63piEa4DBRnc7" target="_blank">
+        <img class="map" src="map-screenshot.jpeg" alt="Мапа до Озера Світле">
+      </a>
+    </section>
+
+    <section id="faq">
+      <h2>Популярні питання</h2>
+      <ul>
+        <li>Чи можна ловити вночі? — Наразі тільки денна риболовля.</li>
+        <li>Чи є кафе? — Працюємо над цим!</li>
+      </ul>
+    </section>
+
+    <section id="media">
+      <h2>Інше</h2>
+      <h3>Заселення риби</h3>
+      <p>Ми регулярно поповнюємо водойму свіжою рибою:</p>
+      <div class="video-scroll-container">
+        <video class="styled-video" controls>
+          <source src="stocking1.mp4" type="video/mp4">
+          Ваш браузер не підтримує відео.
+        </video>
+        <video class="styled-video" controls>
+          <source src="stocking2.mp4" type="video/mp4">
+          Ваш браузер не підтримує відео.
+        </video>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Контакти</h2>
+      <p>Email: <a href="mailto:info@mirrybalki.ua">ozerosvitle.ua</a></p>
+      <p>Отримувач: ФОП Чегак Павло Олександрович</p>
+      <p>IBAN: UA463052990000026005024903277</p>
+      <p>Банк: АТ КБ “ПРИВАТБАНК”</p>
+      <p>Призначення: за риболовлю</p>
+      <p>
+        <a href="https://t.me/Ozero_svitle" target="_blank" class="telegram-link">
+          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e8.png" alt="Telegram" width="32" height="32" style="vertical-align: middle; margin-right: 8px;">
+          Приєднатися до Telegram
+        </a>
+      </p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Озеро Світле | Створено з любов'ю до риболовлі</p>
+  </footer>
+</body>
+</html>
