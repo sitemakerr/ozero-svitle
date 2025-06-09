@@ -1,10 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Озеро Світле — Риболовля в Одесі</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prosto+One&display=swap" rel="stylesheet">
   <style>
     .video-scroll-container {
       display: flex;
@@ -14,17 +17,15 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
-
     .styled-video {
       flex: 0 0 auto;
       width: 300px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 3px solid #558b2f;
+      border: 3px solid #485946;
       scroll-snap-align: start;
-      background-color: #f1f8e9;
+      background-color: #f8f1e4;
     }
-
     .telegram-link {
       display: inline-flex;
       align-items: center;
@@ -39,17 +40,18 @@
     .telegram-link:hover {
       background: #b2ebf2;
     }
-
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      background: #dcedc8;
-      color: #33691e;
+      background: #f8f1e4;
+      color: #485946;
     }
     header {
-      background: #558b2f;
+      background: #485946;
       color: white;
       padding: 1em;
       position: sticky;
@@ -60,8 +62,10 @@
       align-items: center;
     }
     header h1 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin: 0;
+      font-family: 'Prosto One', sans-serif;
+      text-transform: uppercase;
     }
     .menu-toggle {
       background: none;
@@ -72,7 +76,7 @@
       display: none;
     }
     nav {
-      background: #33691e;
+      background: #485946;
       display: flex;
       justify-content: center;
       gap: 2em;
@@ -82,20 +86,45 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
     }
     main {
       padding: 2em;
     }
     section {
       margin-bottom: 2em;
-      background: #f1f8e9;
+      background: #ffffff;
       padding: 1.5em;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       scroll-margin-top: 80px;
     }
+    section h2, section h3 {
+      font-family: 'Prosto One', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      margin-bottom: 0.3em;
+    }
+     section h2::after, section h3::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #485946;
+      margin-top: 0.4em;
+    }
+
+    @media (min-width: 769px) {
+      section h2::after, section h3::after {
+        display: none;
+      }
+    }
+
+    section#conditions h2::after {
+      display: none !important;
+    }
     footer {
-      background: #33691e;
+      background: #485946;
       color: white;
       text-align: center;
       padding: 1em;
@@ -105,7 +134,7 @@
       max-width: 600px;
       display: block;
       margin: 1em auto;
-      border: 2px solid #558b2f;
+      border: 2px solid #485946;
       border-radius: 10px;
     }
     video {
@@ -124,7 +153,7 @@
         top: 60px;
         left: 0;
         right: 0;
-        background: #33691e;
+        background: #485946;
         z-index: 999;
         padding: 1em 0;
       }
@@ -137,11 +166,9 @@
     function toggleMenu() {
       document.querySelector('nav').classList.toggle('show');
     }
-
     document.addEventListener('DOMContentLoaded', function () {
       const navLinks = document.querySelectorAll('nav a');
       const nav = document.querySelector('nav');
-
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           nav.classList.remove('show');
@@ -151,86 +178,137 @@
   </script>
 </head>
 <body>
-  <header>
-    <h1>Озеро Світле</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  </header>
-  <nav>
-    <a href="#intro">Про нас</a>
-    <a href="#conditions">Умови</a>
-    <a href="#benefits">Пільги</a>
-    <a href="#restrictions">Заборони</a>
-    <a href="#location">Місцезнаходження</a>
-    <a href="#faq">Питання</a>
-    <a href="#media">Інше</a>
-    <a href="#contact">Контакти</a>
-  </nav>
-  <main>
-    <section id="intro">
+<header>
+  <h1>Озеро Світле</h1>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+<nav>
+  <a href="#intro">Про нас</a>
+  <a href="#conditions">Умови</a>
+  <a href="#benefits">Пільги</a>
+  <a href="#restrictions">Заборони</a>
+  <a href="#location">Місцезнаходження</a>
+  <a href="#media">Галерея</a>
+  <a href="#reviews">Відгуки</a>
+  <a href="#contact">Контакти</a>
+</nav>
+<main>
+  <section id="intro">
       <h2>Про нас</h2>
-      <p>Риболовля — це наше все! Озеро Світле — це не просто ставок. Це місце, де кожен рибалка, новачок чи професіонал, знайде спокій, адреналін та незабутні враження. Ми пропонуємо комфортні умови для риболовлі, чесні правила, регулярне зариблення, затишні альтанки та ввічливе обслуговування. Приїжджайте та переконайтесь самі — риболовля в нас справді особлива!</p>
+      <p>Риболовля — це більше, ніж хобі. Це спосіб відпочити душею, знайти гармонію, побути наодинці з природою або провести час з близькими у спокої та затишку. Ми створили цей простір, вклавши в нього багато зусиль, любові та турботи , де кожна деталь працює на ваш комфорт і задоволення. Це місце, де кожен рибалка, новачок чи професіонал, зможе насолодитись гарним відпочинком та отримати незабутній досвід. Наш пріоритет — якісний сервіс і приємна атмосфера для кожного, хто любить природу й риболовлю. </p>
     </section>
 
-    <section id="conditions">
-      <h2>Умови риболовлі</h2>
-      <ul>
-        <li><strong>Рибалка на хижу рибу:</strong> Один спінінг — 400 грн. Ліміт — 3 кг. Понад норму — 220 грн/кг.</li>
-        <li><strong>Рибалка на мирну рибу:</strong> До 3 вудок з 1 гачком. 600 грн/особа (6:00–20:00), 1100 грн — 2 особи на одному помості. Ліміт — 4 кг.</li>
-        <li><strong>Спорт пакет:</strong> 400 грн. Без вилову. Фото/відео — і одразу випуск. Мат, антисептик, підсак — обов’язкові. Риба в садку чи травмована — по тарифу.</li>
-        <li>Оренда: антисептик + мат — 50 грн, підсак — 50 грн, поплавкова вудка без помосту — 250 грн (2 кг), додаткова вудка — 200 грн (+1 кг), альтанка з риболовлею — 1600 грн, без — 1000 грн день / 600 грн пів дня, шезлонг — 100 грн, парасолька — 50 грн.</li>
-        <li><strong>Особливі умови:</strong> трофейна риба (понад 5 кг) — лише з фотофіксацією та відпуском. Подарунок — день безкоштовної риболовлі.</li>
-        <li><strong>Для місцевих:</strong> безкоштовно 1 вудка, 3 кг (краснопірка, плотва, карась). Короп — 50% знижка, до 5 кг. Хижа риба — не входить.</li>
-        <li><strong>Ціни понад норму:</strong> короп — 140 грн/кг, карась — 100 грн/кг, щука — 220 грн/кг, білий амур — 170 грн/кг.</li>
-      </ul>
-    </section>
+ <section id="conditions">
+  <h2>Умови риболовлі</h2>
+  <h3>Рибалка на хижу рибу:</h3>
+  <ul>
+    <li>Дозволено один спінінг.</li>
+    <li>Вартість — 400 грн.</li>
+    <li>Ліміт на вилов — 3 кг.</li>
+    <li>Риба понад норму — 220 грн за 1 кг.</li>
+  </ul>
+
+  <h3>Рибалка на мирну рибу:</h3>
+  <ul>
+    <li>Одне рибальське місце — не більше трьох вудок, кожна з одним гачком.</li>
+    <li>Вартість — 600 грн за одну особу.</li>
+    <li>Двоє рибалок на одному помості — 1100 грн.</li>
+    <li>Норма — 4 кг на одного рибалку.</li>
+  </ul>
+
+  <h3>Риба понад норму:</h3>
+  <ul>
+    <li>Короп — 140 грн/кг</li>
+    <li>Карась — 100 грн/кг</li>
+    <li>Білий амур — 170 грн/кг</li>
+  </ul>
+
+  <h3>Спорт пакет на мирну рибу:</h3>
+  <ul>
+    <li>Вартість — 400 грн.</li>
+    <li>Обов’язково використання антисептика, підсака, мата або люльки.</li>
+    <li>Бажано брати рибу мокрими руками.</li>
+    <li>Після фото/відео риба одразу випускається в водойму.</li>
+    <li>Травмована риба не випускається.</li>
+    <li>Оренда: антисептик + мат — 50 грн, підсак — 50 грн.</li>
+  </ul>
+
+  <h3>Додатково:</h3>
+  <ul>
+    <li>Одна поплавкова вудка без помосту — 250 грн. Норма вилову 2 кг. мирної риби.</li>
+    <li>Одна додаткова вудка – 200 грн. та +1кг до ліміту вилову.</li>
+    <li>Оренда альтанки з помостом і риболовлею — 1600 грн.</li>
+    <li>Оренда альтанки без риболовлі — 1000 грн. день, 600 грн. пів дня.</li>
+    <li>Оренда шезлонга 100 грн.</li>
+    <li>Оренда парасольки від сонця 50 грн.</li>
+  </ul>
+
+  <h3>Особливі умови:</h3>
+  <ul>
+    <li>Екземпляри коропа, щуки або білого амура вагою понад 5 кг вважаються трофейними. Їх необхідно обов’язково відпускати назад у ставок із фотофіксацією у присутності адміністрації. Рибалка, який випустить трофейну рибу, отримує подарунок — один безкоштовний день риболовлі (діє до кінця поточного року).</li>
+    <li><b>Безкоштовна риболовля у визначених зонах загального користування:</b></li>
+    <li>Для місцевих мешканців — одна вудка з одним гачком.</li>
+    <li>Для місцевих мешканців, за бажання зберегти улов коропа – знижка 50% від ціни за 1 кг. але не більше 5 кг загальної ваги.</li>
+    <li>Хижі види риб в пільгу для місцевого населення не входять!</li>
+  </ul>
+
+</section>
+
+
 
     <section id="benefits">
       <h2>Пільги</h2>
-      <ul>
-        <li>Інваліди 1–2 групи, учасники війни, АТО — безкоштовна риболовля у загальних зонах при наявності посвідчення. Ліміт — 3 кг.</li>
-        <li>На помостах — знижка 30% для пільгових категорій, але норма вилову — 3 кг.</li>
-      </ul>
-      <h3>Умови бронювання</h3>
-      <p>Онлайн-бронювання — передоплата 50% від вартості послуг.</p>
+    <ul>
+  <li>Безкоштовне право на риболовлю в місцях загального користування мають:</li>
+  <li>Інваліди 1–2 групи.</li>
+  <li>Учасники війни.</li>
+  <li>Учасники АТО.</li>
+  <li>За наявності відповідних посвідчень.</li>
+  <li>Ліміт на вилов — 3 кг на одну людину.</li>
+  <li>В місцях індивідуального відпочинку (помости) пільговим категоріям (місцеві рибалки, військові, люди з обмеженими можливостями) надається знижка 30% тільки на риболовлю.</li>
+  <li>Норма вилову при цьому обмежується до 3 кг.</li>
+   </ul>
+      <h2>Умови бронювання</h2>
+      <p><b>При онлайн-бронюванні необхідна передоплата 50% від вартості заброньованих послуг.</b></p>
+
+        <p><b>Реквізити для оплати:</b></p>
+         <p>Отримувач: ФОП Чегак Павло Олександрович, ЄДРПОУ: 3082218052</p>
+
+           <p>Рахунок IBAN: UA463052990000026005024903277 АТ КБ “ПРИВАТБАНК”</p>
+
+               <p>Призначення платежу: за риболовлю.</p>
     </section>
 
     <section id="restrictions">
+
       <h2>Заборони</h2>
-      <ol>
+      
         <li>Рибалка без дозволу адміністрації.</li>
-        <li>Перевищення ліміту без оплати.</li>
-        <li>Привласнення риби/біоресурсів незаконно.</li>
-        <li>Човни на водоймі.</li>
-        <li>Купання у ставку.</li>
-        <li>Сміття на території.</li>
-        <li>Браконьєрство.</li>
-        <li>Риболовля під час зариблення.</li>
-        <li>Шкода трофейній рибі — штрафи.</li>
-        <li>Снасті з кількома гачками — заборонено.</li>
-      </ol>
-      <p><strong>Увага!</strong> Перебування дітей без дорослих заборонено.</p>
+        <li>Перевищення встановленої норми без доплати.</li>
+        <li>Незаконне привласнення риби або біоресурсів.</li>
+        <li>Переміщення човном по водоймі.</li>
+        <li>Купання у ставку (заборонено ДСНС).</li>
+        <li>Забруднення території.</li>
+        <li>Браконьєрські дії.</li>
+        <li>Риболовля під час зариблення водойми — категорично заборонена.</li>
+        <li>Завдання шкоди трофейним рибам — передбачена компенсація за встановленими цінами.</li>
+        <li>Використання снастей із кількома гачками — дозволений тільки один гачок.</li>
+      
+      <p><strong>Увага!</strong> Перебування неповнолітніх без дорослих на території водойми суворо забороняється.</p>
     </section>
 
     <section id="location">
-      <h2>Місцезнаходження</h2>
-      <p>Красносільський ставок №2 (Старі дачі), поблизу Одеси. Нижче — інтерактивна карта для зручного доїзду:</p>
+      <h2>Де ми знаходимось</h2>
+      <p>Село Світле (Старі Дачі), поблизу м. Одеса. 
+Натискай на карту, там геолокація.</p>
       <a href="https://maps.app.goo.gl/8fpy63piEa4DBRnc7" target="_blank">
-        <img class="map" src="map-screenshot.jpeg" alt="Мапа до Озера Світле">
+        <img class="map" src="схема водойоми2.jpg" alt="Мапа до Озера Світле">
       </a>
     </section>
 
-    <section id="faq">
-      <h2>Популярні питання</h2>
-      <ul>
-        <li>Чи можна ловити вночі? — Наразі тільки денна риболовля.</li>
-        <li>Чи є кафе? — Працюємо над цим!</li>
-      </ul>
-    </section>
 
     <section id="media">
-      <h2>Інше</h2>
-      <h3>Заселення риби</h3>
-      <p>Ми регулярно поповнюємо водойму свіжою рибою:</p>
+      <h2>Галерея</h2>
       <div class="video-scroll-container">
         <video class="styled-video" controls>
           <source src="stocking1.mp4" type="video/mp4">
@@ -242,6 +320,13 @@
         </video>
       </div>
     </section>
+
+    <section id="reviews">
+    <h2>Відгуки</h2>
+    <p>⭐️⭐️⭐️⭐️⭐️ — "Дуже затишне місце, чудовий сервіс!"</p>
+    <p>⭐️⭐️⭐️⭐️ — "Спіймав великого коропа! Приїду ще."</p>
+    <p>⭐️⭐️⭐️⭐️⭐️ — "Дякую за теплий прийом та зручності. Рекомендую!"</p>
+  </section>
 
     <section id="contact">
       <h2>Контакти</h2>
@@ -257,9 +342,9 @@
         </a>
       </p>
     </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Озеро Світле | Створено з любов'ю до риболовлі</p>
-  </footer>
+</main>
+<footer>
+  <p>&copy; 2025 Озеро Світле | Створено з любов'ю до риболовлі</p>
+</footer>
 </body>
 </html>
