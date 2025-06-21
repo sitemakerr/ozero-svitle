@@ -9,37 +9,6 @@
   <title>Озеро Світле — Риболовля в Одесі</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prosto+One&display=swap" rel="stylesheet">
   <style>
-    .video-scroll-container {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding-bottom: 1em;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .styled-video {
-      flex: 0 0 auto;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 3px solid #485946;
-      scroll-snap-align: start;
-      background-color: #f8f1e4;
-    }
-    .telegram-link {
-      display: inline-flex;
-      align-items: center;
-      font-weight: bold;
-      color: #0088cc;
-      text-decoration: none;
-      background: #e0f7fa;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    .telegram-link:hover {
-      background: #b2ebf2;
-    }
     * {
       box-sizing: border-box;
     }
@@ -105,7 +74,7 @@
       font-size: 1.5em;
       margin-bottom: 0.3em;
     }
-     section h2::after, section h3::after {
+    section h2::after, section h3::after {
       content: "";
       display: block;
       width: 100%;
@@ -113,15 +82,37 @@
       background-color: #485946;
       margin-top: 0.4em;
     }
-
     @media (min-width: 769px) {
       section h2::after, section h3::after {
         display: none;
       }
     }
-
     section#conditions h2::after {
       display: none !important;
+    }
+    #conditions h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.2em;
+      text-transform: none;
+      margin-top: 1em;
+    }
+    .telegram-link {
+      display: inline-flex;
+      align-items: center;
+      font-weight: bold;
+      color: #0088cc;
+      text-decoration: none;
+      background: #e0f7fa;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+      max-width: 100%;
+      word-break: break-word;
+      flex-wrap: wrap;
+    }
+    .telegram-link:hover {
+      background: #b2ebf2;
     }
     footer {
       background: #485946;
@@ -140,6 +131,42 @@
     video {
       width: 100%;
       height: auto;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      overflow: hidden;
+      text-align: center;
+    }
+    .carousel-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid #485946;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(72, 89, 70, 0.7);
+      color: white;
+      border: none;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+      font-size: 1.5em;
+      border-radius: 5px;
+    }
+    .carousel-button.prev {
+      left: 10px;
+    }
+    .carousel-button.next {
+      right: 10px;
+    }
+    .carousel-button:hover {
+      background-color: rgba(72, 89, 70, 1);
     }
     @media (max-width: 768px) {
       .menu-toggle {
@@ -160,81 +187,95 @@
       nav.show {
         display: flex;
       }
+      .telegram-link {
+        font-size: 0.9em;
+        padding: 6px 10px;
+        justify-content: center;
+      }
     }
+    .ib-wrap {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+
+
+
+.main-logo {
+  display: block;
+  margin: 1em auto;
+  max-width: 240px;
+  width: 80%;
+  height: auto;
   
-  .carousel-container {
-    position: relative;
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden;
-    text-align: center;
-  }
-  .carousel-image {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 10px;
-    border: 3px solid #485946;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-  .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(72, 89, 70, 0.7);
-    color: white;
-    border: none;
-    padding: 0.3em 0.6em;
-    cursor: pointer;
-    font-size: 1.5em;
-    border-radius: 5px;
-  }
-  .carousel-button.prev {
-    left: 10px;
-  }
-  .carousel-button.next {
-    right: 10px;
-  }
-  .carousel-button:hover {
-    background-color: rgba(72, 89, 70, 1);
-  }
-  @media (max-width: 768px) {
-    .carousel-button {
-      font-size: 1.2em;
-      padding: 0.2em 0.4em;
-    }
-  }
-  
-  
+  /* Убираем всё, что могло быть "наследовано" */
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+nav {
+  background: #485946;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  padding: 1em;
+  position: fixed;
+  top: 60px; /* ниже header */
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav.hide-on-scroll {
+  transform: translateY(-200%);
+}
+
   </style>
   <script>
-    
-  function toggleMenu() {
-    document.querySelector('nav').classList.toggle('show');
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('nav a');
+      const nav = document.querySelector('nav');
+      let lastScrollTop = 0;
+window.addEventListener('scroll', function () {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrollTop > lastScrollTop && scrollTop > 80) {
+    nav.classList.add('hide-on-scroll');
+  } else if (scrollTop < lastScrollTop) {
+    nav.classList.remove('hide-on-scroll');
   }
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('nav a');
-    const nav = document.querySelector('nav');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('show');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('show');
+        });
       });
     });
-  });
-
-  // Карусель з фото IMG_1.jpg до IMG_15.jpg
-  let currentSlide = 1;
-  const totalSlides = 15;
-
-  function moveSlide(step) {
-    currentSlide += step;
-    if (currentSlide > totalSlides) currentSlide = 1;
-    if (currentSlide < 1) currentSlide = totalSlides;
-    document.getElementById("carousel-image").src = `IMG_${currentSlide}.jpg`;
-  }
-
-
+    let currentSlide = 1;
+    const totalSlides = 15;
+    function moveSlide(step) {
+      currentSlide += step;
+      if (currentSlide > totalSlides) currentSlide = 1;
+      if (currentSlide < 1) currentSlide = totalSlides;
+      document.getElementById("carousel-image").src = `IMG_${currentSlide}.jpg`;
+    }
+    let currentReviewSlide = 1;
+    const totalReviewSlides = 12;
+    function moveReviewSlide(step) {
+      currentReviewSlide += step;
+      if (currentReviewSlide > totalReviewSlides) currentReviewSlide = 1;
+      if (currentReviewSlide < 1) currentReviewSlide = totalReviewSlides;
+      document.getElementById("review-carousel-image").src = `test${currentReviewSlide}.jpg`;
+    }
+    
   </script>
 </head>
 <body>
@@ -252,6 +293,9 @@
   <a href="#reviews">Відгуки</a>
   <a href="#contact">Контакти</a>
 </nav>
+
+<img src="лого2.png" alt="Логотип Озеро Світле" class="main-logo">
+
 <main>
   <section id="intro">
       <h2>Про нас</h2>
@@ -302,7 +346,7 @@
     <li>Оренда шезлонга 100 грн.</li>
     <li>Оренда парасольки від сонця 50 грн.</li>
   </ul>
-a
+
   <h3>Особливі умови:</h3>
   <ul>
     <li>Екземпляри коропа, щуки або білого амура вагою понад 5 кг вважаються трофейними. Їх необхідно обов’язково відпускати назад у ставок із фотофіксацією у присутності адміністрації. Рибалка, який випустить трофейну рибу, отримує подарунок — один безкоштовний день риболовлі (діє до кінця поточного року).</li>
@@ -334,7 +378,8 @@ a
         <p><b>Реквізити для оплати:</b></p>
          <p>Отримувач: ФОП Чегак Павло Олександрович, ЄДРПОУ: 3082218052</p>
 
-           <p>Рахунок IBAN: UA463052990000026005024903277 АТ КБ “ПРИВАТБАНК”</p>
+           <p class="ib-wrap">Рахунок IBAN: UA463052990000026005024903277 АТ КБ “ПРИВАТБАНК”</p>
+
 
                <p>Призначення платежу: за риболовлю.</p>
     </section>
@@ -366,7 +411,6 @@ a
       </a>
     </section>
 
-
     <section id="media">
   <h2>Галерея</h2>
   <div class="carousel-container">
@@ -377,11 +421,13 @@ a
 </section>
 
     <section id="reviews">
-    <h2>Відгуки</h2>
-    <p>⭐️⭐️⭐️⭐️⭐️ — "Дуже затишне місце, чудовий сервіс!"</p>
-    <p>⭐️⭐️⭐️⭐️ — "Спіймав великого коропа! Приїду ще."</p>
-    <p>⭐️⭐️⭐️⭐️⭐️ — "Дякую за теплий прийом та зручності. Рекомендую!"</p>
-  </section>
+  <h2>Відгуки</h2>
+  <div class="carousel-container">
+    <button class="carousel-button prev" onclick="moveReviewSlide(-1)">&#10094;</button>
+    <img id="review-carousel-image" src="test1.jpg" alt="Відгук" class="carousel-image">
+    <button class="carousel-button next" onclick="moveReviewSlide(1)">&#10095;</button>
+  </div>
+</section>
 
     <section id="contact">
   <h2>Контакти</h2>
