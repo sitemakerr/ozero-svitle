@@ -234,6 +234,42 @@ nav.hide-on-scroll {
   transform: translateY(-200%);
 }
 
+
+ /* Добавим для десктопов (ширина от 769px) фиксированную навигацию */
+  @media (min-width: 769px) {
+    nav {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      display: flex;
+      background: #485946;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+      z-index: 999;
+    }
+  }
+
+  /* Для телефонов — меню скрыто по умолчанию, открывается кнопкой */
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: #485946;
+      z-index: 999;
+      padding: 1em 0;
+    }
+
+    nav.show {
+      display: flex;
+    }
+  }
   </style>
   <script>
     function toggleMenu() {
@@ -242,16 +278,7 @@ nav.hide-on-scroll {
     document.addEventListener('DOMContentLoaded', function () {
       const navLinks = document.querySelectorAll('nav a');
       const nav = document.querySelector('nav');
-      let lastScrollTop = 0;
-window.addEventListener('scroll', function () {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop && scrollTop > 80) {
-    nav.classList.add('hide-on-scroll');
-  } else if (scrollTop < lastScrollTop) {
-    nav.classList.remove('hide-on-scroll');
-  }
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
+      
 
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -276,6 +303,20 @@ window.addEventListener('scroll', function () {
       document.getElementById("review-carousel-image").src = `test${currentReviewSlide}.jpg`;
     }
     
+    function toggleMenu() {
+    document.querySelector('nav').classList.toggle('show');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('nav a');
+    const nav = document.querySelector('nav');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('show');
+      });
+    });
+  });
   </script>
 </head>
 <body>
