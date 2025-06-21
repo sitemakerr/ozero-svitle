@@ -48,17 +48,25 @@
       background: #485946;
       display: flex;
       justify-content: center;
-      gap: 2em;
+      flex-wrap: wrap;
+      gap: 1em;
       padding: 1em;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 999;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      font-family: 'Montserrat', sans-serif;
+      padding: 0.5em 1em;
     }
     main {
       padding: 2em;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     section {
       margin-bottom: 2em;
@@ -82,12 +90,7 @@
       background-color: #485946;
       margin-top: 0.4em;
     }
-    @media (min-width: 769px) {
-      section h2::after, section h3::after {
-        display: none;
-      }
-    }
-    section#conditions h2::after {
+    #conditions h2::after {
       display: none !important;
     }
     #conditions h3 {
@@ -107,8 +110,6 @@
       padding: 8px 12px;
       border-radius: 8px;
       transition: background 0.3s;
-      max-width: 100%;
-      word-break: break-word;
       flex-wrap: wrap;
     }
     .telegram-link:hover {
@@ -168,6 +169,26 @@
     .carousel-button:hover {
       background-color: rgba(72, 89, 70, 1);
     }
+    .main-logo {
+      display: block;
+      margin: 120px auto 1em auto;
+      max-width: 240px;
+      width: 80%;
+      height: auto;
+    }
+    .ib-wrap {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    @media (max-width: 1024px) {
+      nav a {
+        padding: 0.4em 0.8em;
+      }
+      .main-logo {
+        max-width: 200px;
+        margin-top: 140px;
+      }
+    }
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -176,100 +197,15 @@
         display: none;
         flex-direction: column;
         align-items: center;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
         background: #485946;
-        z-index: 999;
-        padding: 1em 0;
       }
       nav.show {
         display: flex;
       }
-      .telegram-link {
-        font-size: 0.9em;
-        padding: 6px 10px;
-        justify-content: center;
+      .main-logo {
+        margin-top: 160px;
       }
     }
-    .ib-wrap {
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-
-
-
-.main-logo {
-  display: block;
-  margin: 1em auto;
-  max-width: 240px;
-  width: 80%;
-  height: auto;
-  
-  /* Убираем всё, что могло быть "наследовано" */
-  box-shadow: none !important;
-  background: transparent !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-}
-
-nav {
-  background: #485946;
-  display: flex;
-  justify-content: center;
-  gap: 2em;
-  padding: 1em;
-  position: fixed;
-  top: 60px; /* ниже header */
-  left: 0;
-  right: 0;
-  z-index: 999;
-  transition: transform 0.3s ease-in-out;
-}
-
-nav.hide-on-scroll {
-  transform: translateY(-200%);
-}
-
-
- /* Добавим для десктопов (ширина от 769px) фиксированную навигацию */
-  @media (min-width: 769px) {
-    nav {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      display: flex;
-      background: #485946;
-      justify-content: center;
-      gap: 2em;
-      padding: 1em;
-      z-index: 999;
-    }
-  }
-
-  /* Для телефонов — меню скрыто по умолчанию, открывается кнопкой */
-  @media (max-width: 768px) {
-    nav {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: #485946;
-      z-index: 999;
-      padding: 1em 0;
-    }
-
-    nav.show {
-      display: flex;
-    }
-  }
   </style>
   <script>
     function toggleMenu() {
@@ -278,8 +214,6 @@ nav.hide-on-scroll {
     document.addEventListener('DOMContentLoaded', function () {
       const navLinks = document.querySelectorAll('nav a');
       const nav = document.querySelector('nav');
-      
-
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           nav.classList.remove('show');
@@ -302,23 +236,12 @@ nav.hide-on-scroll {
       if (currentReviewSlide < 1) currentReviewSlide = totalReviewSlides;
       document.getElementById("review-carousel-image").src = `test${currentReviewSlide}.jpg`;
     }
-    
-    function toggleMenu() {
-    document.querySelector('nav').classList.toggle('show');
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('nav a');
-    const nav = document.querySelector('nav');
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('show');
-      });
-    });
-  });
+    setInterval(() => moveSlide(1), 4000);
+    setInterval(() => moveReviewSlide(1), 4000);
   </script>
 </head>
+
+
 <body>
 <header>
   <h1>Озеро Світле</h1>
